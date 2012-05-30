@@ -51,8 +51,7 @@ $.fn.datalist = function() {
            'z-index':99, 
            'background':'#fff', 
            'cursor':'default'}
-          }),
-        wrapper = $('<div>').css('position', 'relative');
+          });
         
     //return this if matching datalist isn't found
     //to be polite if there's any chaining
@@ -68,8 +67,7 @@ $.fn.datalist = function() {
       });
     }
     
-    //stick the stuff in and hide it
-    $this.wrap(wrapper);
+    //add the UL to the body
     ul.hide().appendTo('body');
 
     //show it on focus
