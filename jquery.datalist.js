@@ -65,7 +65,7 @@ $.fn.datalist = function() {
           .append('<span class="label" style="float:right">'+opt.label+'</span>')
           .appendTo(ul);
       });
-    };
+    }
     
     //stick the stuff in and hide it
     $this.wrap(wrapper);
