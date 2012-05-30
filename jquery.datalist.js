@@ -83,10 +83,8 @@ $.fn.datalist = function() {
     });
     
     //set value of input to clicked option
-    var lis = $this.next().find('li');
-    lis.mousedown(function(){
-      var value = $(this).find('span.value').text();
-      $this.val(value); 
+    ul.delegate('li', 'mousedown', function(){
+      $this.val($(this).find('span.value').text());
     });
   });
 };
