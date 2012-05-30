@@ -36,10 +36,11 @@ $.fn.datalist = function() {
         //wrapper stuffs
         width = $this.width(),
         height = $this.height(),
+        off = $this.offset(),
         ul = $("<ul>", {"class": "datalist", "width": width, "css": 
           {'position': 'absolute', 
-           'left': 0, 
-           'top': height + 6, 
+           'left': off.left,
+           'top': off.top + height + 6,
            'margin': 0, 
            'padding': '0 2px',
            'list-style': 'none',
@@ -69,8 +70,8 @@ $.fn.datalist = function() {
     
     //stick the stuff in and hide it
     $this.wrap(wrapper);
-    ul.hide().insertAfter($this);
-    
+    ul.hide().appendTo('body');
+
     //show it on focus
     $this.focus(function(){
       ul.show(); 
