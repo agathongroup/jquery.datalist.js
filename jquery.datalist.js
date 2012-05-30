@@ -1,3 +1,5 @@
+// This fork: https://github.com/agathongroup/jquery.datalist.js
+
 // HTML5 datalist plugin v.0.1
 // Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
 // MIT Licensed: http://www.opensource.org/licenses/mit-license.php
