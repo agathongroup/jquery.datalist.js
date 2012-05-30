@@ -33,13 +33,12 @@ $.fn.datalist = function() {
         datalist = $('#' + $this.attr('list')),
         
         //wrapper stuffs
-        width = $this.width(),
-        height = $this.height(),
         off = $this.offset(),
-        ul = $("<ul>", {"class": "datalist", "width": width, "css": 
-          {'position': 'absolute', 
+        ul = $("<ul>", {"class": "datalist", "css": 
+          {'width': $this.width(),
+           'position': 'absolute', 
            'left': off.left,
-           'top': off.top + height + 6,
+           'top': off.top + $this.height() + 6,
            'margin': 0, 
            'padding': '0 2px',
            'list-style': 'none',
