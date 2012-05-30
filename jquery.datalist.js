@@ -31,7 +31,6 @@ $.fn.datalist = function() {
     var $this = $(this),
         //the main guts of the plugin
         datalist = $('#' + $this.attr('list')),
-        opts = datalist.find('option'),
         
         //wrapper stuffs
         width = $this.width(),
@@ -51,38 +50,29 @@ $.fn.datalist = function() {
            'z-index':99, 
            'background':'#fff', 
            'cursor':'default'}
-          });
+          }),
+        lis = '';
         
-    //return this if matching datalist isn't found
-    //to be polite if there's any chaining
+    //return if matching datalist isn't found
     if (!datalist.length) {
-        return this;
-    } else {
-    //otherwise, build the structure
-      opts.each(function(i, opt) {
-        $('<li>')
-          .append('<span class="value">'+opt.value+'</span>')
-          .append('<span class="label" style="float:right">'+opt.label+'</span>')
-          .appendTo(ul);
-      });
+        return;
     }
     
-    //add the UL to the body
-    ul.hide().appendTo('body');
-
-    //show it on focus
-    $this.focus(function(){
-      ul.show(); 
+    //otherwise, build the structure
+    datalist.find('option').each(function(i, opt) {
+      lis += '<li>';
+      lis += '<span class="value">'+opt.value+'</span>';
+      lis += '<span class="label" style="float:right">'+opt.label+'</span>';
+      lis += '</li>';
     });
     
-    //hide it on blur
-    $this.blur(function(){
-      ul.hide();
-    });
-    
-    //set value of input to clicked option
-    ul.delegate('li', 'mousedown', function(){
+    //fill the ul, add event handling, and insert it into the DOM
+    ul.html(lis).hide().appendTo('body').delegate('li', 'mousedown', function(){
       $this.val($(this).find('span.value').text());
     });
+
+    //show it on focus, hide it on blur
+    $this.focus(function(){ ul.show(); }).blur(function(){ ul.hide(); });
+    
   });
 };
